@@ -64,6 +64,8 @@ unsigned long ultimo_tiempo_contador;
 
 int pausa = 1;
 
+int btn_start_antes = 0;
+int btn_reset_antes = 0;
 
 void setup() {
   Serial.begin(9600);
@@ -155,9 +157,7 @@ Se implementa el Antirrebote, evaluando la persistencia del estado.*/
 void tarea_check_botones() {
 
   int btn_start_ahora = digitalRead(BUTTON_START);
-  static int btn_start_antes = 0;
   int btn_reset_ahora = digitalRead(BUTTON_RESET);
-  static int btn_reset_antes = 0;
 
   if(btn_start_ahora && !btn_start_antes) // ANTIRREBOTE
   {
